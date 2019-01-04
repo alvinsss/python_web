@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>mfexchange 测试自助平台 beta 1.0</title>
+<link rel="stylesheet" type="text/css"
+	href="../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../css/demo.css">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+
+<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+</head>
+<body>
+
+<div class="demo-info">
+<div class="demo-tip icon-tip"></div>
+<div>
+<h2>凤凰金融测试自助平台 </h2>
+<h3> test测试环境，beta测试环境</h3></div>
+</div>
+<div style="margin: 100px 0;"></div>
+<div class="easyui-tabs" data-options="tabWidth:142"
+	style="width: 1000px; height: 450px">
+
+
+
+<div title="数据库初始化" style="padding: 10px"><br></br>
+<a href="/csh?name=beta_1"><br>初始化beta1</br>
+</a> <a href="/csh?name=beta_2"><br>初始化beta2</br>
+</a> 
+</br>
+	<font color="#FF0000">该功能适合导入新数据之后的测试环境数据批量操作</font>
+
+</div>
+
+
+<div title="修改产品信息" style="padding: 10px"><br></br>
+<table>
+	<td>产品号</td>
+	<td><input type="text" maxlength="7" id="loanId" class="easyui-validatebox"
+		name="loanId" /></td>
+	</tr>
+	</tr>
+	<td>投资金额</td>
+	<td><input type="text" class="easyui-numberbox" value="1.00"
+		data-options="min:0,precision:2" id="currentMomey" name="currentMomey" /></td>
+	</tr>
+	<td>产品状态</td>
+	
+	<td><select id="order_status" name="order_status">
+		<option value="0">申请中</option>
+		<option value="1">担保审核通过</option>
+		<option value="2">一审</option>
+		<option value="3">二审</option>
+		<option value="4">上架</option>
+		<option value="5">满标</option>
+		<option value="6">已申请还款</option>
+		<option value="7">还款中</option>
+		<option value="8">已完结</option>
+		<option value="9">流标</option>
+		<option value="10">逾期</option>
+	</select>
+	</tr>
+	</td>
+
+	<a>
+	<button id="bnb1">在beta1修改该产品</button>
+	</a>
+	</tr>
+	</td>
+	<a>
+	<button id="bnb2">在beta2修改该产品</button>
+	</a>
+	</tr>
+	</td>
+	</table>
+	
+</div>
+
+
+<div title="发红包 " style="padding: 10px">
+
+<table>
+	<br></br>
+	<td>输入 用户名:</td>
+	<td><input type="text" id="user_id" class="easyui-validatebox" name="user_id"/></td>
+</table>
+	<a>
+	<button id="btn1">在test增加</button>
+	</a>
+	<a>
+	<button id="btn2">在beta增加</button>
+	</a>
+    </br>
+    </br>
+	<font color="#FF0000">Tips:一次操作增加百分比和固定值红包二种</font>
+</div>
+
+
+
+
+<div title="修改账户余额" style="padding: 10px">
+<table>
+	<br></br>
+	<td>手机号码或UserId:</td>
+	<td><input type="text" maxlength="11" id="phone_number" class="easyui-validatebox" name="phone_number" /></td>
+	
+	<td>增加的金额:</td>
+	<td><input type="text" maxlength="10" id="account" class="easyui-validatebox" name="account" /></td>
+</table>
+	<a>
+	<button id="btnAccount1">在beta1修改</button>
+	</a>
+	<a>
+	<button id="btnAccount2">在beta2修改</button>
+	</a>
+</div>
+
+<div title="短信内容查询" style="padding: 10px">
+<table>
+	<br></br>
+	<td>手机号码:</td>
+	<td><input type="text" maxlength="11" id="phone_numbers" class="easyui-validatebox" name="phone_numbers" /></td>
+</table>
+	<a>
+	<button id="btnPhone_numberCode1">在test查询</button>
+	</a>
+	<a>
+	<button id="btnPhone_numberCode2">在beta查询</button>
+	</a>
+</div>
+
+<div title="test" style="padding: 10px">
+<table>
+	<br></br>
+
+</table>
+</div>
+
+
+<script type="text/javascript">
+    
+    //发红包
+    jQuery("#btn1").click(function () {
+    	update_userpasswd("/update_useraddredPage",'beta_1')
+    })
+    jQuery("#btn2").click(function () {
+    	update_userpasswd("/update_useraddredPage",'beta_2')
+    })
+
+    function update_userpasswd(url,db_name) {
+        var user_id = jQuery("#user_id").val();
+        if ( user_id !== "") {
+           	 jQuery.get(url, {db_name:db_name,user_id:user_id}, function (data, textStatus) {
+                 alert(data);
+            });
+        }
+    }
+    
+    //修改产品请求
+    jQuery("#bnb1").click(function () {
+        update_order("/update_order_info",'beta_1')
+    })
+    jQuery("#bnb2").click(function () {
+        update_order("/update_order_info",'beta_2')
+    })
+
+    function update_order(url,db_name) {
+        var loanId = jQuery("#loanId").val();
+        var currentMomey = jQuery("#currentMomey").val();
+        var order_status = jQuery("#order_status").val();
+        if (loanId !== "" && loanId > 0  && currentMomey !== "" && currentMomey > 0 ) {
+            jQuery.get(url, { db_name:db_name,loanId:loanId ,currentMomey:currentMomey,order_status:order_status}, function (data, textStatus) {
+                alert(data);
+            });
+        }
+    }
+    
+    //修改账户余额    
+    jQuery("#btnAccount1").click(function () {
+        update_account("/update_user_account",'beta_1')
+    })
+    jQuery("#btnAccount2").click(function () {
+    	update_account("/update_user_account",'beta_2')
+    })
+
+    function update_account(url,db_name) {
+        var phone_number = jQuery("#phone_number").val();
+        var account = jQuery("#account").val();
+        if ( phone_number !== "" && phone_number.length > 0 &&  account !== "" && account.length > 0 ) {
+           	 jQuery.get(url, {db_name:db_name,phone_number:phone_number,account:account}, function (data, textStatus) {
+                 alert(data);
+            });
+        }
+    }
+    
+    //查询短信验证码
+    jQuery("#btnPhone_numberCode1").click(function () {
+    	get_codebyphone_number("/find_phone_numberCode",'beta_1')
+    })
+    jQuery("#btnPhone_numberCode2").click(function () {
+    	get_codebyphone_number("/find_phone_numberCode",'beta_2')
+    })
+    
+    function get_codebyphone_number(url,db_name) {
+        var phone_number = jQuery("#phone_numbers").val();
+        if ( phone_number !== "" && phone_number.length > 0 ) {
+            jQuery.get(url, {db_name:db_name,phone_number:phone_number}, function (data, textStatus) {
+            	alert(data);
+            });
+        }
+    }
+    
+</script>
+</body>
+</html>

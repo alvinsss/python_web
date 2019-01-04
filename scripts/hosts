@@ -1,0 +1,41 @@
+127.0.0.1	localhost
+127.0.1.1	nicesaddle-Latitude-E5420
+
+#192.168.235.52  ppm.qunar.com
+#192.168.237.71   qunarzz.com
+#192.168.228.60	qunarzz.com
+#192.168.228.24	www.qunar.com
+#192.168.228.24	flight.qunar.com
+
+#192.168.228.60	tinfo.qunar.com
+#192.168.234.121	train.qunar.com
+
+#192.168.237.71 source.qunar.com
+
+#192.168.228.60	qunarzz.com
+#192.168.228.123	travel.qunar.com
+
+#192.168.228.23 hotel.qunar.com
+#192.168.228.23     bnb.qunar.com
+#192.168.228.57 discount.qunar.com
+#192.168.228.59 lh.qunar.com
+#192.168.228.57 lm.qunar.com
+#192.168.228.83 tips.qunar.com
+#192.168.228.83 review.qunar.com
+#192.168.228.126 review.qunar.com
+#192.168.228.126 tips.qunar.com
+192.168.228.22 qhotelbeta.qunarman.com
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+`fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+192.168.234.120   e3an.trade.qunarhotel.com  l3db.trade.qunar.com
+192.168.234.120   z3nw.trade.qunar.com
+192.168.234.120   o9te.trade.qunar.com opbbeta.qunarman.com e3an.trade.qunarhotel.com
+192.168.234.120   l-opb.qunar.com  opb.qunar.com  a1go.trade.qunar.com
+192.168.234.120  a3gd.trade.qunarhotel.com o2hl.trade.qunarhotel.com  a7dx.trade.qunar.com  k2sp.trade.qunar.com   k3sp.trade.qunar.com  h4ds.trade.qunar.com
+192.168.235.62   user.qunar.com l-api.user.qunar.com headshot.user.qunar.com  l-user.qunar.com
+192.168.228.57  hmsbeta1.qunar.com hmsbeta1.qunarman.com
+192.168.228.60    qunarzz.com
